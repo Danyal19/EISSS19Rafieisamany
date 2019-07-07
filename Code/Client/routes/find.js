@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    request(`${process.env.SERVER}/find/${req.query.user}`,
+    request(`${process.env.SERVER}/find/${req.query.user}`, //Query Param kommt von HTML Form
       function(err,response,body) {
           const b=JSON.parse(body);
           res.render('map', {

@@ -3,10 +3,12 @@ const request=require('request');
 const router = express.Router();
 
 /* GET users listing. */
+//Rendern der HTML Seite zum Definiueren der Herausforderung
 router.get('/:user/:challenged', function(req, res, next) {
     res.render('compete.hbs',{title:'Herausforderung definieren',user:req.params.user,chal:req.params.challenged});
 });
 
+//Statistiken vergleichen
 router.post('/', function(req, res, next) {
     request.post({
         url:`${process.env.SERVER}/compete`,
@@ -35,6 +37,7 @@ router.post('/', function(req, res, next) {
         });
 });
 
+//Stattistiken werden angzeigt und veglichen (HTML)
 router.get('/display', function(req, res, next) {
     const q=req.query;
     if(typeof q.w!=='string'){
@@ -64,6 +67,7 @@ router.get('/display', function(req, res, next) {
     }
 });
 
+//Punkte werden in User Profiles gespeichert und Weiterleitung
 function updatePoints(res,winner,looser,points,misc){
     request.post({
             url:`${process.env.SERVER}/compete/points`,

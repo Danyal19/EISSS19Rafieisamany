@@ -49,12 +49,17 @@ function calcTime(t) {
 }
 
 function calcDist(dist,t){
+  //Minuten -> Stunden
   const h=t/60;
+  //Zufallszahl auf Distanz addieren
   dist+=getRandomInt(10,20,dist*h);
+  //Geschwindigkeit berechnen
   const kmh=dist/h;
+  //Return auf 2 Nachkommstellen gerundete kmh/Distanz
   return Math.round(kmh/dist).toFixed(2);
 }
 
+//Generierung einer Zufallszahl in einem gegebenen Intervall, mit Angabe einer Zahl, die als Returnwert nicht zulässig ist
 function getRandomInt(min, max,num) {
   min = Math.ceil(min);
   max = Math.floor(max);

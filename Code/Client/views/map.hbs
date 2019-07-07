@@ -1,0 +1,37 @@
+<h2>Willkommen {{user.vorname}}</h2>
+<pre>{{user.pos.coordinates}}</pre>
+<hr>
+<h1>Such dir einen Trainingspartner aus</h1>
+  <h3>Nutzer in Umgebung</h3>
+
+{{#each agg}}
+    <div class="row" style="border: 3px solid black;">
+        <div class="col">
+            <img src="bild1.png" alt="Profil" width="160" height="145">
+            <h2>{{this.vorname}} {{this.nachname}}</h2>
+            <h3>{{this.distance}}</h3>
+        </div>
+        <div class="col">
+            Punkte: {{this.points}}
+        </div>
+
+
+        <table style="width:100%">
+             <tr>
+                 <td><button onClick="profile(this._id)">Profil ansehen</button></td>
+                 <td>
+                     <form action="/compete/{{this._id}}/{{../user._id}}" method="GET">
+                         <button type="submit">Herausfordern</button>
+                     </form>
+                 </td>
+             </tr>
+        </table>
+    </div>
+    <hr>
+{{/each}}
+
+<script>
+    function profile(id){
+        alert(`Loading profile for user ${id}`);
+    }
+</script>

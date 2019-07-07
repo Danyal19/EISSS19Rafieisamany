@@ -1,0 +1,138 @@
+{{#if looser}}
+    <h1>Ergebnisse der Herausforderung: <em>{{looser.vorname}}</em> gegen <em>{{winner.vorname}}</em></h1>
+    <h2>Gewinner: <em>{{winner.vorname}}</em></h2>
+    <h2>Punkte: <em>{{points}}</em></h2>
+    <pre>Die Punkte wurden bereits gut geschrieben</pre>
+    <h1>Detaillierte Statistiken</h1>
+    <div class="row">
+        <div class="col">
+            <h3><em>{{winner.vorname}}</em></h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-success">
+                    <tr>
+                        <td><b>Sportart:</b></td>
+                        <td>{{winner.statistic.sport}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Gesetztes Zeitlimit:</b></td>
+                        <td>{{goal}} Stunden</td>
+                    </tr>
+                    <tr>
+                        <td><b>Gesetztes Distanz:</b></td>
+                        <td>{{dist}} KM</td>
+                    </tr>
+                    <tr>
+                        <td><b>Zeit:</b></td>
+                        <td>{{winner.statistic.time}} Stunden</td>
+                    </tr>
+                    <tr>
+                        <td><b>Distanz:</b></td>
+                        <td>{{winner.statistic.distance}} KM</td>
+                    </tr>
+                    <tr>
+                        <td><b>Startpunkt:</b></td>
+                        <td>{{winner.statistic.start.coordinates}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Endpunkt:</b></td>
+                        <td>{{winner.statistic.destination.coordinates}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Neuer Punktestand:</b></td>
+                        <td>{{winner.points}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="col">
+            <h3><em>{{looser.vorname}}</em></h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-danger">
+                    <tr>
+                        <td><b>Sportart:</b></td>
+                        <td>{{looser.statistic.sport}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Gesetztes Zeitlimit:</b></td>
+                        <td>{{goal}} Stunden</td>
+                    </tr>
+                    <tr>
+                        <td><b>Gesetzte Distanz:</b></td>
+                        <td>{{dist}} KM</td>
+                    </tr>
+                    <tr>
+                        <td><b>Zeit:</b></td>
+                        <td>{{looser.statistic.time}} Stunden</td>
+                    </tr>
+                    <tr>
+                        <td><b>Distanz:</b></td>
+                        <td>{{looser.statistic.distance}} KM</td>
+                    </tr>
+                    <tr>
+                        <td><b>Startpunkt:</b></td>
+                        <td>{{looser.statistic.start.coordinates}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Endpunkt:</b></td>
+                        <td>{{looser.statistic.destination.coordinates}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Punktestand:</b></td>
+                        <td>{{looser.points}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{{else}}
+    <h1>Ergebnisse der Herausforderung: <em>{{winner.0.vorname}}</em> gegen <em>{{winner.1.vorname}}</em></h1>
+    <h2>Gewinner: <em>{{winner.0.vorname}}</em>, <em>{{winner.1.vorname}}</em></h2>
+    <h2>Punkte: <em>{{points}}</em></h2>
+    <pre>Die Punkte wurden bereits gut geschrieben</pre>
+    <h1>Detaillierte Statistiken</h1>
+    <div class="row">
+        {{#each winner}}
+            <div class="col">
+                <h3><em>{{this.vorname}}</em></h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-success">
+                        <tr>
+                            <td><b>Sportart:</b></td>
+                            <td>{{this.statistic.sport}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Gesetztes Zeitlimit:</b></td>
+                            <td>{{../goal}} Stunden</td>
+                        </tr>
+                        <tr>
+                            <td><b>Gesetzte Distanz:</b></td>
+                            <td>{{../dist}} KM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Zeit:</b></td>
+                            <td>{{this.statistic.time}} Stunden</td>
+                        </tr>
+                        <tr>
+                            <td><b>Distanz:</b></td>
+                            <td>{{this.statistic.distance}} KM</td>
+                        </tr>
+                        <tr>
+                            <td><b>Startpunkt:</b></td>
+                            <td>{{this.statistic.start.coordinates}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Endpunkt:</b></td>
+                            <td>{{this.statistic.destination.coordinates}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Neuer Punktestand:</b></td>
+                            <td>{{this.points}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
